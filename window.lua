@@ -41,7 +41,7 @@ hs.hotkey.bind('alt-shift', 'tab', previousWindow, nil, previousWindow)
 ----------------
 -- resize & move
 ----------------
-local arrowKeys = {'h', 'j', 'k', 'l'}
+local arrowKeys = {'h', 'j', 'k', 'l', 'n', 'f'}
 
 -- prefix + h -> left half
 -- prefix + j -> bottom half
@@ -64,6 +64,8 @@ local rectMap = {
     ['jl'] = {0.5, 0.5, 0.5, 0.5},
     ['kl'] = {0.5, 0, 0.5, 0.5},
     ['hl'] = {0, 0, 1, 1},
+    ['n'] = {1/6, 0, 2/3, 1},
+    ['f'] = {1/6, 0, 2/3, 2/3},
 }
 local wasPressed = {false, false, false, false}
 local pressed = {false, false, false, false}
@@ -126,6 +128,13 @@ for k, v in pairs(rectMapCtrl) do
     end
     prefix.bind('ctrl', k, fn)
 end
+
+prefix.bind('', 'space', function()
+	win = hs.window.focusedWindow()
+	if win ~= nil then
+		win:move({0, 0, 1, 1})
+	end
+end)
 
 -- prefix + shift-hjkl -> move window
 local DX = {-1, 0, 0, 1}
