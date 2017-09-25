@@ -7,7 +7,11 @@ local TIMEOUT = 5
 local modal = hs.hotkey.modal.new({'cmd', 'shift'}, '=')
 
 function modal:entered()
-    modal.alertId = hs.alert.show("Prefix Mode", 9999)
+    modal.alertId = hs.alert.show("Prefix Mode", {
+        textFont = "Menlo",
+        textSize = 24,
+        radius = 0,
+    }, 9999)
     modal.timer = hs.timer.doAfter(TIMEOUT, function() modal:exit() end)
 end
 
@@ -29,7 +33,7 @@ function module.cancelTimeout()
 end
 
 function module.bind(mod, key, fn)
-    modal:bind(mod, key, nil, function() fn(); module.exit() end)
+    modal:bind(mod, key, nil, function() fn(); end)
 end
 
 function module.bindMultiple(mod, key, pressedFn, releasedFn, repeatFn)
@@ -37,7 +41,6 @@ function module.bindMultiple(mod, key, pressedFn, releasedFn, repeatFn)
 end
 
 module.bind('', 'escape', module.exit)
-module.bind('ctrl', 'space', module.exit)
 
 module.bind('', 'd', hs.toggleConsole)
 module.bind('', 'r', hs.reload)
