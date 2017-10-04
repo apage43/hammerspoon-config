@@ -8,7 +8,7 @@ local modal = hs.hotkey.modal.new({'cmd', 'shift'}, '=')
 
 function modal:entered()
     modal.alertId = hs.alert.show("Prefix Mode", {
-        textFont = "Menlo",
+        textFont = "Fira Code",
         textSize = 24,
         radius = 0,
     }, 9999)
@@ -41,6 +41,7 @@ function module.bindMultiple(mod, key, pressedFn, releasedFn, repeatFn)
 end
 
 module.bind('', 'escape', module.exit)
+module.bind('', 'q', module.exit)
 
 module.bind('', 'd', hs.toggleConsole)
 module.bind('', 'r', hs.reload)

@@ -75,7 +75,7 @@ hs.hotkey.bind('alt-shift', 'tab', previousWindow, nil, previousWindow)
 ----------------
 -- resize & move
 ----------------
-local arrowKeys = {'a', 'l', 'n', 'f', '1', '2', '3'}
+local arrowKeys = {'a', 'l', 'n', 'f', '1', '2', '3', 'up', 'down'}
 
 local rectMap = {
     -- left 2/3
@@ -92,6 +92,8 @@ local rectMap = {
     ['2'] = {1/3, 0, 1/3, 1},
     -- right 1/3
     ['3'] = {2/3, 0, 1/3, 1},
+    ['up'] = {0, 0, 1, 1/2},
+    ['down'] = {0, 1/2, 1, 1/2},
 }
 local wasPressed = {false, false, false, false}
 local pressed = {false, false, false, false}
